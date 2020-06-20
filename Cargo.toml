@@ -1,0 +1,11 @@
+[package]
+name = "onion"
+version = "0.1.0"
+authors = ["Tyler"]
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.31"
+
+[dev-dependencies]
+rand = "0.7.3"
