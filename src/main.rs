@@ -1,11 +1,13 @@
 use anyhow::Result;
 
+use crate::aes::aes_cbc;
 use crate::bitwise::flip_and_rotate;
 use crate::encryption::decrypt;
 use crate::network::udp;
 use crate::onion::Onion;
 use crate::parity::checksum;
 
+mod aes;
 mod ascii85;
 mod bitwise;
 mod encryption;
@@ -21,6 +23,7 @@ fn main() -> Result<()> {
     onion.peel(checksum)?;
     onion.peel(decrypt)?;
     onion.peel(udp)?;
+    onion.peel(aes_cbc)?;
 
     onion.print();
 
